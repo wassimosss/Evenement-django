@@ -1,0 +1,86 @@
+ 
+ {% extends 'base.html' %}
+ {% load static %}
+ {% block title %} Paiement {% endblock %}
+   {% block extra_styles %}
+    <link rel="stylesheet" href="{% static 'css/paiement.css' %}">
+   {% endblock %}
+ {% block content %}
+<div class="container payment-container">
+    <h3 class="text-center mb-4">Paiement</h3>
+    <div class="row">
+        <!-- Colonne gauche : Formulaire de paiement -->
+        <div class="col-md-6 border-end pe-4">
+            <form method="post">
+                {% csrf_token %}
+                <input type="hidden" id="action_type" name="action_type" value="payer">
+
+                <div class="mb-3">
+                    <label for="payment_mode" class="form-label"><i class="bi bi-wallet2"></i> Mode de paiement</label>
+                    <select class="form-select" id="payment_mode" name="payment_mode" required>
+                        <option value="visa">Visa</option>
+                        <option value="mastercard">MasterCard</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label for="cardholder_name" class="form-label"><i class="bi bi-person-circle"></i> Nom complet du porteur de carte</label>
+                    <input type="text" class="form-control" id="cardholder_name" name="cardholder_name"
+                        placeholder="Ex : Ahmed El Fassi" required>
+                </div>
+
+                <div class="mb-3 position-relative">
+                    <label for="card_number" class="form-label"><i class="bi bi-credit-card-2-front"></i> Numéro de carte</label>
+                    <input type="text" class="form-control" id="card_number" name="card_number"
+                        placeholder="Ex: 4111 1111 1111 1111" required>
+                    <i id="card-icon" class="bi bi-credit-card card-icon"></i>
+                    <div class="form-text">Visa commence par 4, MasterCard par 51-55</div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label"><i class="bi bi-calendar2-event"></i> Date d'expiration</label>
+                    <div class="d-flex gap-2">
+                        <select class="form-select" id="expiry_month" name="expiry_month" required>
+                            <option value="" disabled selected>Mois</option>
+                        </select>
+                        <select class="form-select" id="expiry_year" name="expiry_year" required>
+                            <option value="" disabled selected>Année</option>
+                        </select>
+                    </div>
+                    <div class="form-text">Sélectionnez une date valide (aujourd’hui ou plus tard)</div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="cvv" class="form-label"><i class="bi bi-shield-lock"></i> Code de sécurité</label>
+                    <input type="text" class="form-control" id="cvv" name="cvv" pattern="^\d{3}$"
+                        placeholder="Ex: 123" required>
+                </div>
+
+                <button type="submit" class="btn btn-success w-100">
+                    <i class="bi bi-check-circle-fill"></i> Payer maintenant
+                </button>
+                <button type="submit" class="reset-btn" onclick="document.getElementById('action_type').value='annuler'; return true;">
+                    <i class="bi bi-x-circle-fill"></i> Annuler le paiement
+                </button>
+            </form>
+        </div>
+        <!-- Colonne droite : Carte de l'événement -->
+        <div class="col-md-6 mt-4 mt-md-0">
+            <div class="card shadow-sm event-card">
+                <img src="{{ reservation.evenement_id.image.url }}" class="card-img-top" alt="Image de l'événement">
+                <div class="card-body">
+                    <h5 class="card-title">{{ reservation.evenement_id.titre }}</h5>
+                    <p class="card-text"><i class="bi bi-geo-alt-fill"></i> {{ reservation.evenement_id.lieu }}</p>
+                    <p class="card-text"><i class="bi bi-calendar-event-fill"></i> {{ reservation.evenement_id.date_evenement }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+ <script src="{% static 'js/paiement.js' %}"></script>
+ {% block extra_scripts %}
+<!-- Bootstrap JS + Script -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+{% endblock %}
+{% endblock %}
+

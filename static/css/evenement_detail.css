@@ -1,0 +1,62 @@
+/* Styles spécifiques pour la page événement */
+.event-title {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin: 40px 0 20px;
+}
+
+.event-container {
+    background-color: white;
+    border-radius: 16px;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.event-image-container {
+    flex: 1 1 40%;
+    max-width: 40%;
+    min-height: 100%;
+}
+
+.event-image {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+.event-info {
+    flex: 1 1 60%;
+    padding: 30px;
+}
+
+.info-label {
+    font-weight: 600;
+    color: #333;
+}
+
+.info-icon {
+    color: #0d6efd;
+    margin-right: 8px;
+}
+
+body.dark-mode .event-container {
+    background-color: #23233a !important;
+}
+
+body.dark-mode .event-info,
+body.dark-mode .event-title,
+body.dark-mode .info-label,
+body.dark-mode .event-info p,
+body.dark-mode .event-info span {
+    color: #f1f1f1 !important;
+}
+
+body.dark-mode .info-icon {
+    color: #90caf9 !important;
+}

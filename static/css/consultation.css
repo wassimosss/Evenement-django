@@ -1,0 +1,172 @@
+    .btn {
+      color: white !important;
+      border-radius: 8px;
+    }
+
+    body {
+      background-color: #f8f9fa;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .navbar {
+      background-color: #0d6efd;
+    }
+
+    .navbar-brand, .navbar-nav .nav-link, .btn-danger {
+      color: white !important;
+    }
+
+    .navbar-brand {
+      font-weight: bold;
+      font-size: 1.4rem;
+    }
+
+    .navbar-nav .nav-link:hover {
+      text-decoration: underline;
+      color: #dfefff !important;
+    }
+
+    .btn-danger {
+      background-color: #dc3545;
+      border: none;
+    }
+
+    .btn-danger:hover {
+      background-color: #bb2d3b;
+    }
+
+    h1 {
+      font-weight: 700;
+      color: #0d6efd;
+    }
+
+    .card {
+      border: none;
+      border-radius: 16px;
+      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.06);
+      background-color: #fff;
+    }
+
+    .table {
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .table th {
+      background-color: #0d6efd;
+      color: white;
+      font-weight: 500;
+    }
+
+    .table td, .table th {
+      vertical-align: middle;
+    }
+
+    .btn-sm i {
+      margin-right: 4px;
+    }
+
+    .text-muted {
+      font-style: italic;
+    }
+
+    .badge {
+      font-size: 0.85rem;
+      padding: 0.4em 0.75em;
+      border-radius: 8px;
+    }
+
+    .theme-toggle {
+      background: transparent;
+      border: none;
+      font-size: 1.5rem;
+      color: white;
+      cursor: pointer;
+      margin-right: 10px;
+    }
+
+    .navbar-end {
+      display: flex;
+      align-items: center;
+    }
+
+    .navbar-end .dropdown, .navbar-end .theme-toggle {
+      margin-left: 10px;
+    }
+
+    /* ------------------- DARK MODE ------------------- */
+    body.dark-mode {
+      background-color: #1e1e2f;
+      color: #f1f1f1;
+    }
+
+    body.dark-mode .navbar {
+      background-color: #1c1c2d;
+    }
+
+    body.dark-mode .card {
+      background-color: #2c2c3a;
+      color: #f1f1f1;
+    }
+
+    body.dark-mode .table th {
+      background-color: #4e5d94;
+      color: white;
+    }
+
+    body.dark-mode .table td {
+      background-color: #2c2c3a;
+      color: #f1f1f1;
+    }
+
+    body.dark-mode .text-muted {
+      color: #c0c0c0;
+    }
+
+    body.dark-mode .btn-danger {
+      background-color: #dc3545;
+      color: white;
+    }
+
+    body.dark-mode .btn-danger:hover {
+      background-color: #bb2d3b;
+    }
+
+    body.dark-mode .btn-success {
+      background-color: #198754;
+      color: white;
+    }
+
+    body.dark-mode .btn-success:hover {
+      background-color: #157347;
+    }
+
+    body.dark-mode .dropdown-menu {
+      background-color: #2c2c3a;
+      color: white;
+    }
+
+    body.dark-mode .dropdown-item {
+      color: white;
+    }
+
+    body.dark-mode .dropdown-item:hover {
+      background-color: #444;
+    }
+    /* Message "Aucune action" clair en mode sombre */
+    body.dark-mode .no-action-message {
+      color: #dfefff;  /* Couleur claire pour contraster avec le fond sombre */
+      font-size: 1.1rem;
+      font-weight: 500;
+      text-align: center;
+      margin-top: 30px;
+    }
+    .no-action-message {
+     font-size: 1rem;
+     font-weight: 500;
+     color: #6c757d; /* Couleur par défaut (gris) pour le mode clair */
+    }
+
+    body.dark-mode .no-action-message {
+    color: #f8f9fa;  /* Blanc très clair, bonne lisibilité sur fond sombre */
+   }

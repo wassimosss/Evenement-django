@@ -1,0 +1,126 @@
+body {
+  background-color: #f4f7fa;
+}
+
+.card {
+  background-color: #ffffff;
+  border: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.alert {
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+  border-radius: 10px;
+  font-size: 1.1rem;
+}
+
+.list-group-item {
+  background-color: #f8f9fa;
+  border: none;
+  border-radius: 10px;
+}
+
+.btn {
+  border-radius: 25px;
+  font-weight: 600;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.btn:hover {
+  background-color: #007bff;
+  box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3);
+}
+
+.btn-outline-secondary:hover {
+  background-color: #f8f9fa;
+}
+
+.bi {
+  font-size: 1.2rem;
+}
+
+.fw-bold {
+  font-weight: 600;
+}
+
+/* Mode sombre pour la page de confirmation de paiement */
+body.dark-mode {
+  background-color: #1e1e2f;
+  color: #f1f1f1;
+}
+body.dark-mode .card {
+  background-color: #23233a;
+  color: #f1f1f1;
+  border: none;
+}
+body.dark-mode .alert {
+  background-color: #263238;
+  color: #c8ffb0;
+  border-color: #66bb6a;
+  box-shadow: 0 2px 12px rgba(102,187,106,0.15);
+}
+body.dark-mode .alert .alert-heading,
+body.dark-mode .alert h2,
+body.dark-mode .alert i {
+  color: #b9f6ca !important;
+}
+body.dark-mode .list-group-item {
+  background-color: #23233a;
+  color: #f1f1f1;
+  border: none;
+}
+body.dark-mode .btn,
+body.dark-mode .btn-outline-secondary {
+  color: #fff;
+  background-color: #4e5d94;
+  border: none;
+}
+body.dark-mode .btn:hover,
+body.dark-mode .btn-outline-secondary:hover {
+  background-color: #3a3a4d;
+  color: #fff;
+}
+body.dark-mode .fw-bold {
+  color: #ffe082;
+}
+body.dark-mode .card,
+body.dark-mode .card *:not(.badge):not(.bg-success):not(.bg-danger):not(.bg-warning):not(.bg-info),
+body.dark-mode .list-group-item,
+body.dark-mode .list-group-item *:not(.badge):not(.bg-success):not(.bg-danger):not(.bg-warning):not(.bg-info),
+body.dark-mode .alert,
+body.dark-mode .alert *:not(.badge):not(.bg-success):not(.bg-danger):not(.bg-warning):not(.bg-info),
+body.dark-mode .fw-bold {
+    color: #fff !important;
+}
+
+/* Statut confirmé en vert en mode sombre */
+body.dark-mode .badge.bg-success,
+body.dark-mode .text-success,
+body.dark-mode .fw-bold.text-success {
+    color: #4caf50 !important; /* Vert vif */
+    background-color: #212 !important;
+}
+
+/* Icône Visa en bleu en mode sombre */
+body.dark-mode .bi-credit-card,
+body.dark-mode .bi-credit-card-fill {
+    color: #2196f3 !important; /* Bleu */
+}
+
+/* Icône MasterCard en jaune en mode sombre */
+body.dark-mode .bi-credit-card-2-front-fill {
+    color: #ffe082 !important; /* Jaune */
+}
+
+/* Icône de confirmation en haut (check) en vert vif en mode sombre */
+body.dark-mode .bi-check-circle-fill,
+body.dark-mode .bi-check-circle {
+    color: #4caf50 !important;
+}
+
+/* Forcer la couleur verte sur l'icône de confirmation et le statut en mode sombre */
+body.dark-mode .bi-check-circle-fill.text-success,
+body.dark-mode .fw-bold.text-success {
+    color: #4caf50 !important;
+}

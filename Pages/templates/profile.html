@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Mon Profil {% endblock %}
+  {% block extra_styles %}
+  <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+  {% endblock %}
+  
+{% block content %}
+
+<div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card shadow">
+        <div class="card-body text-center">
+
+          <div class="profile-img-container mb-3">
+            {% if profile.image %}
+              <img src="{{ profile.image.url }}" alt="Image de profil" class="profile-img">
+            {% else %}
+              <img src="/media/default-profile/defaul.jpeg" alt="Image par défaut" class="profile-img">
+            {% endif %}
+            <a href="#" class="edit-icon" data-bs-toggle="modal" data-bs-target="#updateImageModal">
+              <i class="bi bi-camera"></i>
+            </a>
+          </div>
+
+          <h4 class="card-title">Mon Profil</h4>
+
+          <ul class="list-group list-group-flush mt-4 text-start">
+            <li class="list-group-item d-flex align-items-center">
+              <i class="bi bi-person-circle me-3 fs-5 text-primary"></i>
+              <span><strong>Nom d'utilisateur:</strong> {{ user.username }}</span>
+            </li>
+            <li class="list-group-item d-flex align-items-center">
+              <i class="bi bi-person-fill me-3 fs-5 text-success"></i>
+              <span><strong>Prénom:</strong> {{ user.first_name }}</span>
+            </li>
+            <li class="list-group-item d-flex align-items-center">
+              <i class="bi bi-person-badge-fill me-3 fs-5 text-info"></i>
+              <span><strong>Nom:</strong> {{ user.last_name }}</span>
+            </li>
+            <li class="list-group-item d-flex align-items-center">
+              <i class="bi bi-envelope-at-fill me-3 fs-5 text-warning"></i>
+              <span><strong>Email:</strong> {{ user.email }}</span>
+            </li>
+            <li class="list-group-item d-flex align-items-center">
+              <i class="bi bi-calendar-check-fill me-3 fs-5 text-danger"></i>
+              <span><strong>Date d'inscription:</strong> {{ user.date_joined|date:"d M Y" }}</span>
+            </li>
+            <li class="list-group-item d-flex align-items-start">
+              <i class="bi bi-info-circle-fill me-3 fs-5 text-secondary mt-1"></i>
+              <span>
+                <strong>Bio:</strong><br>
+                {{ profile.bio|default:"Aucune biographie disponible." }}
+              </span>
+            </li>
+          </ul>
+
+          <div class="mt-4">
+            <a href="{% url 'home' %}" class="btn btn-primary me-2"><i class="bi bi-house-door-fill"></i> Retour à l'accueil</a>
+            <a href="{% url 'modifier_profile' %}" class="btn btn-primary"><i class="bi bi-pencil-fill"></i> Modifier le profil</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="updateImageModal" tabindex="-1" aria-labelledby="updateImageModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <form method="POST" enctype="multipart/form-data" action="{% url 'update_profile_image' %}">
+        {% csrf_token %}
+        <div class="modal-header">
+          <h5 class="modal-title">Changer la photo de profil</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
+        </div>
+        <div class="modal-body">
+          <label for="id_image" class="form-label">Nouvelle image :</label>
+          <input type="file" class="form-control" name="image" id="id_image" accept="image/*" required>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+          <button type="submit" class="btn btn-primary"><i class="bi bi-save"></i> Enregistrer</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Réservations{% endblock %}
+  {% block extra_styles %}
+    <link rel="stylesheet" href="{% static 'css/reservation.css' %}">
+    {% endblock %}
+
+{% block messages %}
+    <!-- Affichage des messages -->
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-dismissible fade show animated-alert 
+                {% if message.tags == 'success' %}alert-success
+                {% elif message.tags == 'error' or message.tags == 'danger' %}alert-danger
+                {% elif message.tags == 'warning' %}alert-warning
+                {% else %}alert-info
+                {% endif %}" role="alert">
+
+                <i class="bi 
+                    {% if message.tags == 'success' %}bi-check-circle-fill
+                    {% elif message.tags == 'error' or message.tags == 'danger' %}bi-x-circle-fill
+                    {% elif message.tags == 'warning' %}bi-exclamation-triangle-fill
+                    {% else %}bi-info-circle-fill
+                    {% endif %} me-2"></i>
+
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Fermer"></button>
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+<!-- Contenu principal -->
+<div class="container reservation-container">
+    <h2><i class="bi bi-ticket-perforated-fill me-2"></i>Réserver une place</h2>
+    <p class="subtitle">Événement : <strong>{{ evenement.titre }}</strong></p>
+
+    <!-- Formulaire -->
+    <form method="POST">
+        {% csrf_token %}
+
+        <div class="form-group">
+            <label for="first_name">Prénom</label>
+            <input type="text" name="first_name" id="first_name" class="form-control"
+                   value="{{ request.user.first_name }}" required>
+            <i class="bi bi-person form-icon"></i>
+        </div>
+
+        <div class="form-group">
+            <label for="last_name">Nom</label>
+            <input type="text" name="last_name" id="last_name" class="form-control"
+                   value="{{ request.user.last_name }}" required>
+            <i class="bi bi-person-fill form-icon"></i>
+        </div>
+
+        <div class="form-group">
+            <label for="nombre_places">Nombre de places</label>
+            <input type="number" name="nombre_places" id="nombre_places" class="form-control"
+                   min="1" max="{{ evenement.nombre_place }}" value="1" required>
+            <i class="bi bi-hash form-icon"></i>
+        </div>
+
+        <button type="submit" class="btn btn-submit">
+            <i class="bi bi-check-circle me-1"></i>Valider la réservation
+        </button>
+    </form>
+
+    <a href="{% url 'evenement_detail' evenement_id=evenement.id %}" class="btn btn-cancel mt-3">
+        <i class="bi bi-arrow-left me-1"></i>Annuler
+    </a>
+</div>
+{% endblock %}
+
+ {% block extra_scripts %}
+<!-- Bootstrap JS pour les alertes -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+{% endblock %}

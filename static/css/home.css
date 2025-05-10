@@ -1,0 +1,54 @@
+/* Styles spécifiques pour la page d'accueil */
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.card-img-top {
+    height: 200px;
+}
+
+.titre-evenement {
+    color: #333;
+}
+
+body.dark-mode .titre-evenement {
+    color: #fff !important;
+}
+
+/* Overlay sombre sur l'image si complet */
+.event-image-container {
+    position: relative;
+}
+
+.img-overlay-dark {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.6);
+    z-index: 1;
+    border-radius: 0.5rem;
+}
+
+.overlay-message {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0,0,0,0.7);
+    color: #fff;
+    padding: 0.5rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: bold;
+    z-index: 2;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+/* Amélioration de la lisibilité en mode sombre pour les cards */
+body.dark-mode .card-title,
+body.dark-mode .card-text,
+body.dark-mode .card {
+    color: #f1f1f1 !important;
+}
+body.dark-mode .card a.btn {
+    color: #fff !important;
+}

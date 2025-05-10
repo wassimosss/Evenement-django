@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Mes Réservations {% endblock %}
+  {% block extra_styles %}
+  <link rel="stylesheet" href="{% static 'css/consultation.css' %}">
+  {% endblock %}
+{% block content %}
+  <!-- Contenu principal -->
+  <div class="container mt-5">
+    <h1 class="text-center mb-5">Mes Réservations</h1>
+
+    <div class="card shadow p-4">
+      {% if reservations %}
+        <div class="table-responsive">
+          <table class="table table-striped align-middle text-center">
+            <thead>
+              <tr>
+                <th>Événement</th>
+                <th>Places</th>
+                <th>Statut</th>
+                <th>Date</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for reservation in reservations %}
+                <tr>
+                  <td>{{ reservation.evenement_id.titre }}</td>
+                  <td>{{ reservation.nombre_place_reservee }}</td>
+                  <td>
+                    {% if reservation.statut == 'annulée' %}
+                      <span class="badge bg-danger">Annulée</span>
+                    {% elif reservation.statut == 'confirmée' %}
+                      <span class="badge bg-success">Confirmée</span>
+                    {% else %}
+                      <span class="badge bg-warning text-dark">En cours</span>
+                    {% endif %}
+                  </td>
+                  <td>{{ reservation.created_at|date:"d/m/Y H:i" }}</td>
+                  <td>
+                    {% if reservation.statut == 'en cours' %}
+                      <a href="{% url 'validate_reservation' reservation.id %}" class="btn btn-success btn-sm">
+                        <i class="bi bi-check-circle"></i> Confirmer
+                      </a>
+                      <a href="{% url 'delete_reservation' reservation.id %}" class="btn btn-danger btn-sm">
+                        <i class="bi bi-x-circle"></i> Supprimer
+                      </a>
+                    {% else %}
+                    <span class="no-action-message">Aucune action</span>
+                    {% endif %}
+                  </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      {% else %}
+        <p class="text-center no-action-message">Vous n'avez aucune réservation pour le moment.</p>
+      {% endif %}
+    </div>
+  </div>
+{% endblock %}

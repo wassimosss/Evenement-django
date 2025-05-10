@@ -1,0 +1,165 @@
+/* Container principal */
+.reservation-container {
+    max-width: 650px;
+    margin: 60px auto;
+    background: linear-gradient(145deg, #ffffff, #f0f0f0);
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    padding: 40px;
+}
+
+/* Titre principal */
+.reservation-container h2 {
+    font-weight: 700;
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+/* Sous-titre */
+.subtitle {
+    text-align: center;
+    color: #6c757d;
+    margin-bottom: 25px;
+}
+
+/* Ajout d'un fond clair pour le sous-titre en mode sombre */
+body.dark-mode .reservation-container .subtitle {
+    background-color: rgba(255, 255, 255, 0.1); /* Fond légèrement transparent pour faire ressortir l'événement */
+    padding: 10px;
+    border-radius: 8px;
+}
+
+/* Améliorer la couleur du texte important en mode sombre */
+body.dark-mode .reservation-container p strong {
+    color: #f1f1f1; /* Texte en blanc pour un contraste clair avec le fond sombre */
+}
+
+/* Groupes de champs */
+.form-group {
+    position: relative;
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    font-weight: 600;
+    color: #495057;
+    margin-bottom: 6px;
+    display: block;
+}
+
+/* Champs de formulaire */
+.reservation-container .form-control {
+    border-radius: 12px;
+    padding: 12px 42px 12px 16px;
+    border: 1px solid #ced4da;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.reservation-container .form-control:focus {
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 0.15rem rgba(13, 110, 253, 0.25);
+}
+
+/* Icône à droite dans les champs */
+.form-icon {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #adb5bd;
+    font-size: 1.1rem;
+}
+
+/* Bouton de soumission */
+.btn-submit {
+    width: 100%;
+    border-radius: 12px;
+    font-weight: 600;
+    padding: 12px;
+    background-color: #0d6efd;
+    border: none;
+    color: white;
+    transition: background-color 0.3s;
+}
+
+.btn-submit:hover {
+    background-color: #084298;
+}
+
+/* Bouton d'annulation */
+.btn-cancel {
+    margin-top: 10px;
+    width: 100%;
+    border-radius: 12px;
+    font-weight: 600;
+    padding: 12px;
+    background-color: #6c757d;
+    border: none;
+    color: white;
+    transition: background-color 0.3s;
+}
+
+.btn-cancel:hover {
+    background-color: #5a6268;
+}
+
+/* Message animé (alerte ou confirmation) */
+.animated-alert {
+    animation: fadeInUp 0.5s ease-out both;
+    margin-top: 15px;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Mode sombre */
+body.dark-mode .reservation-container {
+    background: linear-gradient(145deg, #2c2c3a, #1e1e2f);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode .reservation-container h2,
+body.dark-mode .subtitle,
+body.dark-mode .form-group label {
+    color: #f1f1f1;
+}
+
+body.dark-mode .reservation-container .form-control {
+    background-color: #3a3a4a;
+    border: 1px solid #555;
+    color: #f1f1f1;
+}
+
+body.dark-mode .reservation-container .form-control:focus {
+    border-color: #4e5d94;
+    box-shadow: 0 0 0 0.15rem rgba(78, 93, 148, 0.5);
+}
+
+body.dark-mode .form-icon {
+    color: #ccc;
+}
+
+body.dark-mode .btn-submit {
+    background-color: #4e5d94;
+}
+
+body.dark-mode .btn-submit:hover {
+    background-color: #3e4c7a;
+}
+
+body.dark-mode .btn-cancel {
+    background-color: #6c757d;
+}
+
+body.dark-mode .btn-cancel:hover {
+    background-color: #5a6268;
+}

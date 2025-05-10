@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% block title %}Confirmation du Paiement{% endblock %}
+{% load static %}
+  {% block extra_styles %}
+  <link rel="stylesheet" href="{% static 'css/confirmation.css' %}">
+  {% endblock %}
+{% block content %}
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <div class="card shadow-lg border-0 rounded-4">
+        <div class="card-body p-5">
+          
+          <!-- Message de confirmation -->
+          <div class="alert alert-success" role="alert">
+            <div class="text-center mb-4">
+              <i class="bi bi-check-circle-fill text-success" style="font-size: 3rem;"></i>
+              <h2 class="mt-3">Confirmation du Paiement</h2>
+            </div>
+            <h4 class="alert-heading"><i class="bi bi-credit-card-check-fill"></i> Paiement confirmé avec succès !</h4>
+            <p>Merci pour votre paiement. Voici les détails de la transaction :</p>
+          </div>
+
+          <!-- Détails de la transaction -->
+          <ul class="list-group list-group-flush mb-3">
+            <li class="list-group-item d-flex justify-content-between">
+              <strong>Nom du porteur :</strong>
+              <span class="fw-bold">{{ paiement.full_name }}</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between">
+              <strong>Mode de paiement :</strong>
+              <span class="fw-bold">
+                {{ paiement.mode_paiement }} 
+                {% if paiement.mode_paiement == 'visa' %}
+                  <i class="bi bi-credit-card text-primary"></i>
+                {% elif paiement.mode_paiement == 'mastercard' %}
+                  <i class="bi bi-credit-card-2-front-fill text-warning"></i>
+                {% endif %}
+              </span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between">
+              <strong>Montant payé :</strong>
+              <span class="fw-bold">{{ paiement.montant }} MAD</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between">
+              <strong>Statut du paiement :</strong>
+              <span class="fw-bold text-success">{{ paiement.statut }}</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between">
+              <strong>Date de paiement :</strong>
+              <span class="fw-bold">{{ paiement.date_paiement }}</span>
+            </li>
+            {% if paiement.card_number %}
+            <li class="list-group-item d-flex justify-content-between">
+              <strong>Numéro de carte :</strong>
+              <span class="fw-bold">************{{ paiement.card_number|slice:"-4:" }}</span>
+            </li>
+            {% endif %}
+          </ul>
+
+          <hr>
+
+          <p class="mb-0">Votre réservation est maintenant confirmée. Vous pouvez revenir à la page d'accueil ou consulter vos réservations.</p>
+
+          <!-- Boutons alignés -->
+          <div class="d-flex justify-content-center mt-4 flex-wrap gap-3">
+            <a href="{% url 'home' %}" class="btn btn-primary px-4 py-2">
+              <i class="bi bi-house-door-fill me-1"></i> Accueil
+            </a>
+            <a href="{% url 'consultation' %}" class="btn btn-outline-secondary px-4 py-2">
+              <i class="bi bi-calendar-check me-1"></i> Mes Réservations
+            </a>
+            <a href="{% url 'download_ticket' %}" class="btn btn-success px-4 py-2">
+              <i class="bi bi-download me-2"></i> Télécharger votre billet
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

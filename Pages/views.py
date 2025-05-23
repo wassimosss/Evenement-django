@@ -291,6 +291,10 @@ def download_ticket(request):
     p.showPage()
     p.save()
     return response
+@login_required
+def historique_paiement(request):
+    paiements = Paiement.objects.filter(bilet_id__created_by=request.user.username).order_by('-date_paiement')
+    return render(request, 'historique_paiement.html', {'paiements': paiements})
 
 
 

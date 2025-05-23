@@ -40,4 +40,4 @@ class Profile(models.Model):
     bio=models.TextField(blank=True,null=True)
     phone_number=models.CharField(max_length=15, blank=True)
     address=models.CharField(max_length=255, blank=True)
-    image=models.ImageField(upload_to='profils_photos/', blank=True, null=True, default='default-profil/default.jpeg')
+    image=models.ImageField(upload_to='profils_photos/', blank=True, null=True, default='profils_photos/default.jpeg')

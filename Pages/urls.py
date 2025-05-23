@@ -14,4 +14,5 @@ urlpatterns = [
     path('paiement/confirmation/<int:paiement_id>/', views.confirmation_paiement, name='confirmation_paiement'),
     path('download_ticket/', views.download_ticket, name='download_ticket'),
     path('profile/update-image/', views.update_profile_image, name='update_profile_image'),
+    path('historique-paiement/', views.historique_paiement, name='historique_paiement'),
 ]
